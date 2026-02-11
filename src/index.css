@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Modern Light/Ice background */
+    --background: 195 40% 98%;
+    --foreground: 185 50% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 185 50% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 185 50% 12%;
+
+    /* Primary: Deep Caribbean Teal */
+    --primary: 185 84% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Soft Lagoon */
+    --secondary: 185 30% 94%;
+    --secondary-foreground: 185 84% 25%;
+
+    --muted: 195 30% 96%;
+    --muted-foreground: 185 20% 50%;
+
+    /* Accent: Sunset Orange */
+    --accent: 24 95% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 185 20% 90%;
+    --input: 185 20% 90%;
+    --ring: 185 84% 25%;
+
+    --radius: 1rem;
+
+    /* Custom color mappings for backward compatibility / aliases */
+    --gold: 24 95% 58%;      /* mapped to accent orange */
+    --gold-dark: 24 95% 45%; /* darker orange */
+    --sky-light: 185 30% 94%;
+    --sky-medium: 185 60% 80%;
+    
+    /* Re-mapping 'navy' to a Deep Slate Teal for contrast */
+    --navy: 190 60% 12%;
+    
+    --emerald: 160 84% 39%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(185 84% 25%) 0%, hsl(175 70% 35%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(24 95% 58%) 0%, hsl(35 95% 60%) 100%); /* Orange-Yellow gradient */
+    --gradient-trust: linear-gradient(180deg, hsl(195 40% 98%) 0%, hsl(185 30% 96%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 10px 40px -10px hsl(185 84% 25% / 0.1);
+    --shadow-card: 0 5px 20px -5px hsl(185 50% 12% / 0.05);
+    --shadow-gold: 0 10px 30px -10px hsl(24 95% 58% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 190 60% 8%;
+    --foreground: 195 40% 98%;
+
+    --card: 190 50% 10%;
+    --card-foreground: 195 40% 98%;
+
+    --popover: 190 50% 10%;
+    --popover-foreground: 195 40% 98%;
+
+    --primary: 185 70% 50%;
+    --primary-foreground: 190 60% 8%;
+
+    --secondary: 190 40% 15%;
+    --secondary-foreground: 195 40% 98%;
+
+    --muted: 190 35% 15%;
+    --muted-foreground: 190 20% 65%;
+
+    --accent: 24 95% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 195 40% 98%;
+
+    --border: 190 32% 15%;
+    --input: 190 32% 15%;
+    --ring: 185 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    /* Utilizing the same modern sans font for headings, removed serif for stronger modern look */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-trust {
+    background: var(--gradient-trust);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slow-zoom {
+    animation: slowZoom 20s linear infinite alternate;
+  }
+
+  .animate-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 4s linear infinite;
+  }
+
+  .animate-bounce-slow {
+     animation: bounce 3s infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+  }
+
+  @keyframes shimmer {
+    to {
+      background-position: 200% center;
+    }
+  }
+}
